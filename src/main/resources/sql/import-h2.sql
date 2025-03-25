@@ -1,3 +1,4 @@
+// my chnage
 -- password in plaintext: "password"
 INSERT INTO USER (user_id, password, email, username, name, last_name, active)
 VALUES
