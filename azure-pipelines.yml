@@ -14,3 +14,10 @@ steps:
       command: 'restore'
       feedsToUse: select
       vstsFeed: 'my-vsts-feed'
+
+  - task : DotNetCoreCLI@2
+    displayName: Build
+    inputs:
+      command: build
+      projects: '**/* .csproj'
+      arguments: '---configuration $(buildConfiguration)'
