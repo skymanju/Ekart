@@ -15,9 +15,27 @@ steps:
       feedsToUse: select
       vstsFeed: 'my-vsts-feed'
 
+ # build the code
   - task : DotNetCoreCLI@2
     displayName: Build
     inputs:
       command: build
       projects: '**/* .csproj'
       arguments: '---configuration $(buildConfiguration)'
+
+# publish code
+
+  - task: DotNetCoreCLI@2
+    displayName: publich
+    inputs:
+      command : publish
+      publishWebProjects: true
+      arguments: '--configuration $(Buildconfiguration) --output $(Build.ArtifactsStagingDirectory)'
+      zipAfterPublish: true
+
+# upload: takes the artifacts and uploads thme to be ready for release. 
+  - task: PublishPipelineArtifact@1
+    displayName: upload
+    inputs:
+      targetPath: $(Build.ArtifactsStagingDirectory)'
+      artifactName: 'testapp2'
