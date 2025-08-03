@@ -1,0 +1,16 @@
+trigger:
+- main
+
+pool:
+ vmImage: 'windows-lates'
+
+ variables:
+   buildConfiguration: 'release'
+
+steps:
+  - task : DotNetCoreCLI@2 # ruuning the nuget restore 4, it restores all the dependencies 
+    displayName: Restore
+    inputs:
+      command: 'restore'
+      feedsToUse: select
+      vstsFeed: 'my-vsts-feed'
