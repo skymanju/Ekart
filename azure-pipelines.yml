@@ -26,7 +26,7 @@ steps:
 # publish code
 
   - task: DotNetCoreCLI@2
-    displayName: publich
+    displayName: publish
     inputs:
       command : publish
       publishWebProjects: true
